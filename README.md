@@ -1,16 +1,54 @@
-# React + Vite
+# 🍽️ ZaikaHub – Food Delivery Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ZaikaHub is a **React-based food delivery platform** designed to connect users with restaurants and home chefs.  
+It offers a simple, interactive interface for browsing menus, managing orders, and simulating the full order placement flow — all built with clean UI principles and a focus on usability.
 
-Currently, two official plugins are available:
+Currently, the project runs on a **local environment** with complete **frontend functionality** and a **custom MongoDB database** designed for restaurants, home chefs, users, and orders.  
+Backend integration with **Node.js and Express.js** is currently in progress.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Responsive and modern UI built with **React** and **Tailwind CSS**  
+- Dynamic pages for **restaurants, home chefs, and order management**  
+- Interactive **cart system** for adding/removing food items  
+- Locally created **MongoDB collections** for restaurants, users, and orders  
+- Clean code structure for scalability and easy backend integration *(coming soon)*  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+
+**Frontend:** React.js, Tailwind CSS  
+**Database:** MongoDB (local)  
+**Backend:** Node.js, Express.js *(integration in progress)*  
+**Tools:** VS Code, Git, GitHub  
+
+---
+
+## 🧩 Project Status
+
+✅ Frontend fully functional  
+🔄 Backend Integration (Node.js + Express.js) in progress  
+
+---
+
+## 📸 Preview
+
+*(Add screenshots later if you wish – optional section)*  
+
+---
+
+## 💡 Future Enhancements
+
+- Add **authentication (login/signup)**  
+- Add **order history and payment simulation**  
+- Complete **backend API integration** with Express.js  
+
+---
+
+## 👩‍💻 Author
+
+**Gouri Amit Gupta**  
+[LinkedIn](https://www.linkedin.com/in/gourigupta2208) | [GitHub](https://github.com/gouri-gupta)

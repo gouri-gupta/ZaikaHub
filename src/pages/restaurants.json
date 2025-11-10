@@ -1,0 +1,1148 @@
+{"restaurants":
+[{
+  "_id": {
+    "$oid": "689f119dda1bfb28f3eec4c5"
+  },
+  "name": "Raghuveer Refreshment",
+  "location": {
+    "address": "Rajapeth road",
+    "city": "Nagpur",
+    "pincode": 444560
+  },
+  "cuisine_type": [
+    "North Indian",
+    "Maharashtrian",
+    "Gujrati"
+  ],
+  "food_type": "veg",
+  "menu_items": [
+    {
+      "item_id": {
+        "$oid": "689f119dda1bfb28f3eec4bd"
+      },
+      "name": "Kachori",
+      "price": 35,
+      "category": "Snacks",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f119dda1bfb28f3eec4be"
+      },
+      "name": "Samosa",
+      "price": 40,
+      "category": "Snacks",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f119dda1bfb28f3eec4bf"
+      },
+      "name": "Sambharwadi",
+      "price": 45,
+      "category": "Snacks",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f119dda1bfb28f3eec4c0"
+      },
+      "name": "Bombay Bhel",
+      "price": 50,
+      "category": "Snacks",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f119dda1bfb28f3eec4c1"
+      },
+      "name": "Dhokla",
+      "price": 30,
+      "category": "Breakfast",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f119dda1bfb28f3eec4c2"
+      },
+      "name": "Misal Pav",
+      "price": 35,
+      "category": "Main Course",
+      "available": false
+    },
+    {
+      "item_id": {
+        "$oid": "689f119dda1bfb28f3eec4c3"
+      },
+      "name": "Palak wada",
+      "price": 35,
+      "category": "Sides",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f119dda1bfb28f3eec4c4"
+      },
+      "name": "Kothimbir wadi",
+      "price": 25,
+      "category": "Snacks",
+      "available": true
+    }
+  ],
+  "ratings": 4.9
+},
+{
+  "_id": {
+    "$oid": "689f168cda1bfb28f3eec4d5"
+  },
+  "name": "Spice Garden",
+  "location": {
+    "address": "Carter Road, Bandra West, ",
+    "city": "Mumbai",
+    "pincode": 400050
+  },
+  "cuisine_type": [
+    "North Indian",
+    "Chinese"
+  ],
+  "food_type": "veg",
+  "menu_items": [
+    {
+      "item_id": {
+        "$oid": "689f168cda1bfb28f3eec4c6"
+      },
+      "name": "Paneer Butter Masala",
+      "price": 250,
+      "category": "Main Course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f168cda1bfb28f3eec4c7"
+      },
+      "name": "Veg Hakka Noodles ",
+      "price": 180,
+      "category": "Main Course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f168cda1bfb28f3eec4c8"
+      },
+      "name": "Gobi Manchurian ",
+      "price": 150,
+      "category": "Starters",
+      "available": true
+    }
+  ],
+  "ratings": 4.3
+},
+{
+  "_id": {
+    "$oid": "689f168cda1bfb28f3eec4d6"
+  },
+  "name": "Bombay Biryani House",
+  "location": {
+    "address": "Lokhandwala Complex",
+    "city": "Mumbai",
+    "pincode": 400053
+  },
+  "cuisine_type": [
+    "North Indian",
+    "Mughlai"
+  ],
+  "food_type": "mixed",
+  "menu_items": [
+    {
+      "item_id": {
+        "$oid": "689f168cda1bfb28f3eec4c9"
+      },
+      "name": "Chicken Biryani ",
+      "price": 320,
+      "category": "Main Course",
+      "available": false
+    },
+    {
+      "item_id": {
+        "$oid": "689f168cda1bfb28f3eec4ca"
+      },
+      "name": "Paneer Tikka",
+      "price": 200,
+      "category": "Starters",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f168cda1bfb28f3eec4cb"
+      },
+      "name": "Mutton Rogan Josh",
+      "price": 380,
+      "category": "Main Course",
+      "available": true
+    }
+  ],
+  "ratings": 4.5
+},
+{
+  "_id": {
+    "$oid": "689f168cda1bfb28f3eec4d7"
+  },
+  "name": "Cafe Mocha",
+  "location": {
+    "address": "Dadar TT Circle",
+    "city": "Mumbai",
+    "pincode": 400014
+  },
+  "cuisine_type": [
+    "Continental",
+    "Cafe",
+    "Desserts"
+  ],
+  "food_type": "veg",
+  "menu_items": [
+    {
+      "item_id": {
+        "$oid": "689f168cda1bfb28f3eec4cc"
+      },
+      "name": "Cappuccino",
+      "price": 120,
+      "category": "Beverage",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f168cda1bfb28f3eec4cd"
+      },
+      "name": "Chocolate Brownie",
+      "price": 90,
+      "category": "Dessert",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f168cda1bfb28f3eec4ce"
+      },
+      "name": "Veg Sandwich",
+      "price": 150,
+      "category": "Breakfast",
+      "available": true
+    }
+  ],
+  "ratings": 4.6
+},
+{
+  "_id": {
+    "$oid": "689f168cda1bfb28f3eec4d8"
+  },
+  "name": "Zaika-e-Lucknow",
+  "location": {
+    "address": "Colaba Causeway",
+    "city": "Mumbai",
+    "pincode": 400005
+  },
+  "cuisine_type": [
+    "Awadhi",
+    "Mughlai",
+    "Kebabs"
+  ],
+  "food_type": "non-veg",
+  "menu_items": [
+    {
+      "item_id": {
+        "$oid": "689f168cda1bfb28f3eec4cf"
+      },
+      "name": "Galouti Kebab",
+      "price": 250,
+      "category": "Starters",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f168cda1bfb28f3eec4d0"
+      },
+      "name": "Chicken Korma",
+      "price": 300,
+      "category": "Main Course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f168cda1bfb28f3eec4d1"
+      },
+      "name": "Mutton Seekh",
+      "price": 280,
+      "category": "Starters",
+      "available": false
+    }
+  ],
+  "ratings": 3.9
+},
+{
+  "_id": {
+    "$oid": "689f168cda1bfb28f3eec4d9"
+  },
+  "name": "Tandoor Tales",
+  "location": {
+    "address": "Powai Lake Road",
+    "city": "Mumbai",
+    "pincode": 400076
+  },
+  "cuisine_type": [
+    "North Indian",
+    "Punjabi"
+  ],
+  "food_type": "veg",
+  "menu_items": [
+    {
+      "item_id": {
+        "$oid": "689f168cda1bfb28f3eec4d2"
+      },
+      "name": "Dal Makhani ",
+      "price": 220,
+      "category": "Main Course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f168cda1bfb28f3eec4d3"
+      },
+      "name": "Tandoori Rot",
+      "price": 30,
+      "category": "Main Course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f168cda1bfb28f3eec4d4"
+      },
+      "name": "Malai Kofta",
+      "price": 240,
+      "category": "Main Course",
+      "available": true
+    }
+  ],
+  "ratings": 3.5
+},
+{
+  "_id": {
+    "$oid": "689f1a6eda1bfb28f3eec4e9"
+  },
+  "name": "Nagpur Zaayka",
+  "location": {
+    "address": "Wardha Road",
+    "city": "Nagpur",
+    "pincode": 440025
+  },
+  "cuisine_type": [
+    "Maharashtrian",
+    "South Indian"
+  ],
+  "food_type": "mixed",
+  "menu_items": [
+    {
+      "item_id": {
+        "$oid": "689f1a6eda1bfb28f3eec4da"
+      },
+      "name": "Misal Pav",
+      "price": 80,
+      "category": "Breakfast",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f1a6eda1bfb28f3eec4db"
+      },
+      "name": "Masala Dosa ",
+      "price": 90,
+      "category": "Breakfast",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f1a6eda1bfb28f3eec4dc"
+      },
+      "name": "Chicken Sukka",
+      "price": 260,
+      "category": "Main Course",
+      "available": false
+    }
+  ],
+  "ratings": 2.8
+},
+{
+  "_id": {
+    "$oid": "689f1a6eda1bfb28f3eec4ea"
+  },
+  "name": "Deccan Delight",
+  "location": {
+    "address": "Sitabuldi Main Road",
+    "city": "Nagpur",
+    "pincode": 440012
+  },
+  "cuisine_type": [
+    "Hyderabadi",
+    "Andhra",
+    "Biryani"
+  ],
+  "food_type": "non-veg",
+  "menu_items": [
+    {
+      "item_id": {
+        "$oid": "689f1a6eda1bfb28f3eec4dd"
+      },
+      "name": "Hyderabadi Chicken Biryani ",
+      "price": 350,
+      "category": "Main Course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f1a6eda1bfb28f3eec4de"
+      },
+      "name": "Mutton Curry",
+      "price": 380,
+      "category": "Main Course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f1a6eda1bfb28f3eec4df"
+      },
+      "name": "Veg Biryani",
+      "price": 280,
+      "category": "Main Course",
+      "available": true
+    }
+  ],
+  "ratings": 4.5
+},
+{
+  "_id": {
+    "$oid": "689f1a6eda1bfb28f3eec4eb"
+  },
+  "name": "Urban Rasoi",
+  "location": {
+    "address": "Civil Lines",
+    "city": "Nagpur",
+    "pincode": 440001
+  },
+  "cuisine_type": [
+    "North Indian",
+    "Chinese",
+    "Fast Food"
+  ],
+  "food_type": "veg",
+  "menu_items": [
+    {
+      "item_id": {
+        "$oid": "689f1a6eda1bfb28f3eec4e0"
+      },
+      "name": "Chole Bhature ",
+      "price": 180,
+      "category": "Main Course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f1a6eda1bfb28f3eec4e1"
+      },
+      "name": "Spring Rolls",
+      "price": 160,
+      "category": "Starters",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f1a6eda1bfb28f3eec4e2"
+      },
+      "name": "Veg Burger",
+      "price": 120,
+      "category": "Snacks",
+      "available": true
+    }
+  ],
+  "ratings": 2
+},
+{
+  "_id": {
+    "$oid": "689f1a6eda1bfb28f3eec4ec"
+  },
+  "name": "The Royal Thali",
+  "location": {
+    "address": "Mahal Road",
+    "city": "Nagpur",
+    "pincode": 440032
+  },
+  "cuisine_type": [
+    "Gujarati",
+    "Rajasthani",
+    "Thali"
+  ],
+  "food_type": "veg",
+  "menu_items": [
+    {
+      "item_id": {
+        "$oid": "689f1a6eda1bfb28f3eec4e3"
+      },
+      "name": "Gujarati Thali ",
+      "price": 300,
+      "category": "Main course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f1a6eda1bfb28f3eec4e4"
+      },
+      "name": "Rajasthani Thali",
+      "price": 320,
+      "category": "Main course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f1a6eda1bfb28f3eec4e5"
+      },
+      "name": "Basundi ",
+      "price": 150,
+      "category": "Dessert",
+      "available": true
+    }
+  ],
+  "ratings": 4.7
+},
+{
+  "_id": {
+    "$oid": "689f1a6eda1bfb28f3eec4ed"
+  },
+  "name": "Pune Street Eats",
+  "location": {
+    "address": "Manish Nagar",
+    "city": "Nagpur",
+    "pincode": 440015
+  },
+  "cuisine_type": [
+    "Indian Street Food"
+  ],
+  "food_type": "mixed",
+  "menu_items": [
+    {
+      "item_id": {
+        "$oid": "689f1a6eda1bfb28f3eec4e6"
+      },
+      "name": "Pani Puri ",
+      "price": 50,
+      "category": "Snacks",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f1a6eda1bfb28f3eec4e7"
+      },
+      "name": "Pav Bhaji ",
+      "price": 120,
+      "category": "Main Course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f1a6eda1bfb28f3eec4e8"
+      },
+      "name": "Chicken Kebab Roll",
+      "price": 180,
+      "category": "Snacks",
+      "available": true
+    }
+  ],
+  "ratings": 3.3
+},
+{
+  "_id": {
+    "$oid": "689f2061da1bfb28f3eec4fd"
+  },
+  "name": "Shahi Zaika",
+  "location": {
+    "address": "MG Road",
+    "city": "Pune",
+    "pincode": 411001
+  },
+  "cuisine_type": [
+    "North Indian",
+    "Mughlai",
+    "Afghani"
+  ],
+  "food_type": "non-veg",
+  "menu_items": [
+    {
+      "item_id": {
+        "$oid": "689f2061da1bfb28f3eec4ee"
+      },
+      "name": "Butter Chicken ",
+      "price": 320,
+      "category": "Main Course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f2061da1bfb28f3eec4ef"
+      },
+      "name": "Afghani Chicken",
+      "price": 350,
+      "category": "Main Course",
+      "available": false
+    },
+    {
+      "item_id": {
+        "$oid": "689f2061da1bfb28f3eec4f0"
+      },
+      "name": "Veg Korma",
+      "price": 250,
+      "category": "Main Course",
+      "available": true
+    }
+  ],
+  "ratings": 3.8
+},
+{
+  "_id": {
+    "$oid": "689f2061da1bfb28f3eec4fe"
+  },
+  "name": "The Breakfast Point",
+  "location": {
+    "address": "FC Road",
+    "city": "Pune",
+    "pincode": 411004
+  },
+  "cuisine_type": [
+    "Breakfast",
+    "Cafe",
+    "Juices"
+  ],
+  "food_type": "veg",
+  "menu_items": [
+    {
+      "item_id": {
+        "$oid": "689f2061da1bfb28f3eec4f1"
+      },
+      "name": "Poha ",
+      "price": 60,
+      "category": "Breakfast",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f2061da1bfb28f3eec4f2"
+      },
+      "name": "Cold Coffee ",
+      "price": 100,
+      "category": "Beverage",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f2061da1bfb28f3eec4f3"
+      },
+      "name": "Cheese veg Omelette",
+      "price": 80,
+      "category": "Breakfast",
+      "available": true
+    }
+  ],
+  "ratings": 2.6
+},
+{
+  "_id": {
+    "$oid": "689f2061da1bfb28f3eec4ff"
+  },
+  "name": "Curry Leaf Bistro",
+  "location": {
+    "address": "Kothrud Depot Road",
+    "city": "Pune",
+    "pincode": 411038
+  },
+  "cuisine_type": [
+    "South Indian",
+    "Chettinad"
+  ],
+  "food_type": "veg",
+  "menu_items": [
+    {
+      "item_id": {
+        "$oid": "689f2061da1bfb28f3eec4f4"
+      },
+      "name": "Idli Sambar",
+      "price": 70,
+      "category": "Breakfast",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f2061da1bfb28f3eec4f5"
+      },
+      "name": "Chettinad Veg Curry",
+      "price": 200,
+      "category": "Main Course",
+      "available": false
+    },
+    {
+      "item_id": {
+        "$oid": "689f2061da1bfb28f3eec4f6"
+      },
+      "name": "Filter Coffee",
+      "price": 60,
+      "category": "Beverage",
+      "available": true
+    }
+  ],
+  "ratings": 4.5
+},
+{
+  "_id": {
+    "$oid": "689f2061da1bfb28f3eec500"
+  },
+  "name": "Delhi Tandoor",
+  "location": {
+    "address": "Lajpat Nagar",
+    "city": "Delhi",
+    "pincode": 789654
+  },
+  "cuisine_type": [
+    "North Indian",
+    "Punjabi"
+  ],
+  "food_type": "mixed",
+  "menu_items": [
+    {
+      "item_id": {
+        "$oid": "689f2061da1bfb28f3eec4f7"
+      },
+      "name": "Amritsari Kulcha ",
+      "price": 150,
+      "category": "Main Course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f2061da1bfb28f3eec4f8"
+      },
+      "name": "Chicken Amritsari ",
+      "price": 300,
+      "category": "Main Course",
+      "available": false
+    },
+    {
+      "item_id": {
+        "$oid": "689f2061da1bfb28f3eec4f9"
+      },
+      "name": "Paneer Lababdar ",
+      "price": 260,
+      "category": "Main Course",
+      "available": true
+    }
+  ],
+  "ratings": 2.9
+},
+{
+  "_id": {
+    "$oid": "689f2061da1bfb28f3eec501"
+  },
+  "name": "Taj Spice",
+  "location": {
+    "address": "Karol bagh",
+    "city": "Delhi",
+    "pincode": 123456
+  },
+  "cuisine_type": [
+    "Indian",
+    "Continental",
+    "Chinese",
+    "Desserts"
+  ],
+  "food_type": "veg",
+  "menu_items": [
+    {
+      "item_id": {
+        "$oid": "689f2061da1bfb28f3eec4fa"
+      },
+      "name": "Paneer Chilli ",
+      "price": 180,
+      "category": "Starters",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f2061da1bfb28f3eec4fb"
+      },
+      "name": "Pasta Alfredo ",
+      "price": 250,
+      "category": "Main Course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f2061da1bfb28f3eec4fc"
+      },
+      "name": "Gulab Jamun ",
+      "price": 100,
+      "category": "Dessert",
+      "available": true
+    }
+  ],
+  "ratings": 4.6
+},
+{
+  "_id": {
+    "$oid": "689f25dfda1bfb28f3eec532"
+  },
+  "name": "Domino's Pizza",
+  "location": {
+    "address": "Connaught Place",
+    "city": "Delhi",
+    "pincode": 110001
+  },
+  "cuisine_type": [
+    "Italian",
+    "Fast Food",
+    "Beverages",
+    "Desserts"
+  ],
+  "food_type": "mixed",
+  "menu_items": [
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec514"
+      },
+      "name": "Margherita Pizza",
+      "price": 249,
+      "category": "Main Course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec515"
+      },
+      "name": "Peppy Paneer Pizza",
+      "price": 399,
+      "category": "Main Course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec516"
+      },
+      "name": "Chicken Dominator Pizza",
+      "price": 499,
+      "category": "Main Course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec517"
+      },
+      "name": "Garlic Breadsticks",
+      "price": 129,
+      "category": "Starters",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec518"
+      },
+      "name": "Stuffed Garlic Bread",
+      "price": 179,
+      "category": "Starters",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec519"
+      },
+      "name": "Choco Lava Cake",
+      "price": 109,
+      "category": "Desserts",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec51a"
+      },
+      "name": "Coke (500ml)",
+      "price": 60,
+      "category": "Beverages",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec51b"
+      },
+      "name": "Veggie Paradise Pizza",
+      "price": 369,
+      "category": "Main Course",
+      "available": true
+    }
+  ],
+  "ratings": 4.1
+},
+{
+  "_id": {
+    "$oid": "689f25dfda1bfb28f3eec533"
+  },
+  "name": "McDonald's",
+  "location": {
+    "address": "Powai Lake Road",
+    "city": "Mumbai",
+    "pincode": 400076
+  },
+  "cuisine_type": [
+    "Fast Food",
+    "American",
+    "Beverages",
+    "Desserts"
+  ],
+  "food_type": "mixed",
+  "menu_items": [
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec51c"
+      },
+      "name": "McAloo Tikki Burger",
+      "price": 99,
+      "category": "Main Course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec51d"
+      },
+      "name": "McChicken Burger",
+      "price": 149,
+      "category": "Main Course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec51e"
+      },
+      "name": "Filet-O-Fish Burger",
+      "price": 169,
+      "category": "Main Course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec51f"
+      },
+      "name": "French Fries (Medium)",
+      "price": 89,
+      "category": "Starters",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec520"
+      },
+      "name": "McFlurry Oreo",
+      "price": 120,
+      "category": "Desserts",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec521"
+      },
+      "name": "Coke (500ml)",
+      "price": 60,
+      "category": "Beverages",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec522"
+      },
+      "name": "Veg Pizza McPuff",
+      "price": 45,
+      "category": "Snacks",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec523"
+      },
+      "name": "Chicken McNuggets (6 pcs)",
+      "price": 199,
+      "category": "Starters",
+      "available": true
+    }
+  ],
+  "ratings": 3.8
+},
+{
+  "_id": {
+    "$oid": "689f25dfda1bfb28f3eec534"
+  },
+  "name": "Haldiram's",
+  "location": {
+    "address": "Karol Bagh",
+    "city": "Delhi",
+    "pincode": 110005
+  },
+  "cuisine_type": [
+    "North Indian",
+    "Street Food",
+    "Sweets",
+    "Snacks",
+    "Beverages"
+  ],
+  "food_type": "veg",
+  "menu_items": [
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec524"
+      },
+      "name": "Raj Kachori",
+      "price": 120,
+      "category": "Snacks",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec525"
+      },
+      "name": "Chole Bhature",
+      "price": 150,
+      "category": "Main Course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec526"
+      },
+      "name": "Pav Bhaji",
+      "price": 130,
+      "category": "Main Course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec527"
+      },
+      "name": "Rasgulla (2 pcs)",
+      "price": 60,
+      "category": "Desserts",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec528"
+      },
+      "name": "Gulab Jamun (2 pcs)",
+      "price": 50,
+      "category": "Desserts",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec529"
+      },
+      "name": "Masala Chai",
+      "price": 30,
+      "category": "Beverages",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec52a"
+      },
+      "name": "Aloo Tikki Chaat",
+      "price": 90,
+      "category": "Snacks",
+      "available": true
+    }
+  ],
+  "ratings": 4.4
+},
+{
+  "_id": {
+    "$oid": "689f25dfda1bfb28f3eec535"
+  },
+  "name": "Bikanervala",
+  "location": {
+    "address": "Connaught Place",
+    "city": "Delhi",
+    "pincode": 110001
+  },
+  "cuisine_type": [
+    "North Indian",
+    "Rajasthani",
+    "Street Food",
+    "Sweets",
+    "Snacks"
+  ],
+  "food_type": "veg",
+  "menu_items": [
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec52b"
+      },
+      "name": "Dal Baati Churma",
+      "price": 180,
+      "category": "Main Course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec52c"
+      },
+      "name": "Paneer Butter Masala",
+      "price": 220,
+      "category": "Main Course",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec52d"
+      },
+      "name": "Kachori with Aloo Sabzi",
+      "price": 100,
+      "category": "Breakfast",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec52e"
+      },
+      "name": "Jalebi (200g)",
+      "price": 80,
+      "category": "Desserts",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec52f"
+      },
+      "name": "Rabri",
+      "price": 100,
+      "category": "Desserts",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec530"
+      },
+      "name": "Lassi (Sweet)",
+      "price": 60,
+      "category": "Beverages",
+      "available": true
+    },
+    {
+      "item_id": {
+        "$oid": "689f25dfda1bfb28f3eec531"
+      },
+      "name": "Samosa (2 pcs)",
+      "price": 40,
+      "category": "Snacks",
+      "available": true
+    }
+  ],
+  "ratings": 4.2
+}]
+}

@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+/* global.css */
+body {
+  background-color: rgb(248, 241, 230);
+}
+
+
+.marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: 60px; /* height of your banner */
+  display: flex;
+  align-items: center;
+}
+
+.marquee-text {
+  display: inline-block;
+  white-space: nowrap;
+  padding-left: 100%;
+  font-size: 1.8rem;
+  animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.scroll{
+    /*border: 2px solid yellowgreen;*/
+    display: flex; /* Use flexbox to center content vertically */
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    gap: 5px; /* Adds space between "Scroll down" and the icon */
+
+    text-decoration: none;
+    color: black;
+
+    /* Absolute positioning to place it without disturbing other elements */
+    position: absolute;
+    bottom: 2rem; /* Position it from the bottom. Use 'rem' for better responsiveness. */
+    left: 50%; /* Start at the horizontal center */
+    transform: translateX(-50%); /* Adjust for perfect centering */
+    cursor: pointer; /* Change cursor to a pointer on hover */
+
+    /* Add the bounce animation */
+    animation: bounce 2s infinite;
+}
+
+/* Add the keyframe animation */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+    }
+    40% {
+        transform: translateY(-10px) translateX(-50%);
+    }
+    60% {
+        transform: translateY(-5px) translateX(-50%);
+    }
+}

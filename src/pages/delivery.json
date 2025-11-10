@@ -1,0 +1,191 @@
+{
+    "delivery":[{
+  "_id": {
+    "$oid": "689f600c64ae0cddb3eec4f4"
+  },
+  "name": "Sameer Chaudhary",
+  "phone": 789326541,
+  "order_id": {
+    "$oid": "689f600c64ae0cddb3eec4f5"
+  },
+  "status": "assigned",
+  "tip": 10,
+  "rating": 2.9
+},
+{
+  "_id": {
+    "$oid": "68a00da4ebd215fe0eeec4a9"
+  },
+  "name": "Vishal Singh",
+  "phone": 789215419,
+  "order_id": {
+    "$oid": "68a00da4ebd215fe0eeec4aa"
+  },
+  "status": "assigned",
+  "tip": 0,
+  "rating": 3.5
+},
+{
+  "_id": {
+    "$oid": "68a01864ebd215fe0eeec4ab"
+  },
+  "name": "Deepak Lal",
+  "phone": 4561593577,
+  "order_id": {
+    "$oid": "68a01864ebd215fe0eeec4ac"
+  },
+  "status": "out for delivery",
+  "tip": 20,
+  "rating": 4.7
+},
+{
+  "_id": {
+    "$oid": "68a0196debd215fe0eeec4ad"
+  },
+  "name": "Sanjay Jha",
+  "phone": 7539512580,
+  "order_id": {
+    "$oid": "68a0196debd215fe0eeec4ae"
+  },
+  "status": "delivered",
+  "tip": 20,
+  "rating": 3.9
+},
+{
+  "_id": {
+    "$oid": "68a04ee9e20b79c4baeec4a9"
+  },
+  "name": "Nishant Kumar",
+  "phone": 1594561230,
+  "order_id": {
+    "$oid": "68a04ee9e20b79c4baeec4aa"
+  },
+  "status": "assigned",
+  "tip": 20,
+  "rating": 4.1
+},
+{
+  "_id": {
+    "$oid": "68a04fa4e20b79c4baeec4ab"
+  },
+  "name": "Prashant Kumar",
+  "phone": 7774561230,
+  "order_id": {
+    "$oid": "68a04fa4e20b79c4baeec4ac"
+  },
+  "status": "assigned",
+  "tip": 0,
+  "rating": 2.5
+},
+{
+  "_id": {
+    "$oid": "68a05388e20b79c4baeec4ad"
+  },
+  "name": "Chintan Sharma",
+  "phone": 7774561007,
+  "order_id": {
+    "$oid": "68a05388e20b79c4baeec4ae"
+  },
+  "status": "out for delivery",
+  "tip": 50,
+  "rating": 4.5
+},
+{
+  "_id": {
+    "$oid": "68a05432e20b79c4baeec4af"
+  },
+  "name": "Prakhar Singh",
+  "phone": 7413245697,
+  "order_id": {
+    "$oid": "68a05432e20b79c4baeec4b0"
+  },
+  "status": "delivered",
+  "tip": 10,
+  "rating": 3.5
+},
+{
+  "_id": {
+    "$oid": "68a056cce20b79c4baeec4b3"
+  },
+  "name": "Ajiz Khan",
+  "phone": 456852100,
+  "order_id": {
+    "$oid": "68a056cce20b79c4baeec4b4"
+  },
+  "status": "delivered",
+  "tip": 0,
+  "rating": 2.9
+},
+{
+  "_id": {
+    "$oid": "68a057a0e20b79c4baeec4b5"
+  },
+  "name": "Rehman Mansoor",
+  "phone": 7666657322,
+  "order_id": {
+    "$oid": "68a057a0e20b79c4baeec4b6"
+  },
+  "status": "out for delivery",
+  "tip": 30,
+  "rating": 3.5
+},
+{
+  "_id": {
+    "$oid": "68a05a1ee20b79c4baeec4b7"
+  },
+  "name": "Manoj Sarda",
+  "phone": 1231231230,
+  "order_id": {
+    "$oid": "68a05a1ee20b79c4baeec4b8"
+  },
+  "status": "assigned",
+  "tip": 0,
+  "rating": 3.1
+},
+{
+  "_id": {
+    "$oid": "68a05a9de20b79c4baeec4b9"
+  },
+  "name": "Ritesh Kumar",
+  "phone": 4569851223,
+  "order_id": {
+    "$oid": "68a05a9de20b79c4baeec4ba"
+  },
+  "status": "assigned",
+  "tip": 10,
+  "rating": 3.5
+},
+{
+  "_id": {
+    "$oid": "68a05ef5e20b79c4baeec4bb"
+  },
+  "name": "Rohit Verma",
+  "phone": 9876543210,
+  "order_id": null,
+  "status": "available",
+  "tip": 0,
+  "rating": 4.2
+},
+{
+  "_id": {
+    "$oid": "68a05ef5e20b79c4baeec4bc"
+  },
+  "name": "Arjun Mehta",
+  "phone": 9123456789,
+  "order_id": null,
+  "status": "available",
+  "tip": 0,
+  "rating": 3.8
+},
+{
+  "_id": {
+    "$oid": "68a05ef5e20b79c4baeec4bd"
+  },
+  "name": "Karan Wanjare",
+  "phone": 9123446744,
+  "order_id": null,
+  "status": "available",
+  "tip": 0,
+  "rating": 2.5
+}]
+}

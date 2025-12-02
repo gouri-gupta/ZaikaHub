@@ -3253,6 +3253,40 @@
       "join_date": {
         "$date": "2025-10-17T11:30:28.178Z"
       }
+    },
+    {
+      "id": "8aa6",
+      "_id": {
+        "$oid": "06036aa8-e1fe-4e13-b4a8-543fce47cf16"
+      },
+      "name": "Anokhi",
+      "email": "anokhi@gmail.com",
+      "phone": 9422918612,
+      "address": {
+        "street": "abc",
+        "city": "Pune",
+        "pincode": 411057
+      },
+      "join_date": {
+        "$date": "2025-11-19T13:04:10.290Z"
+      }
+    },
+    {
+      "id": "05fb",
+      "_id": {
+        "$oid": "eb5cb44a-664a-4230-97fd-40c316687505"
+      },
+      "name": "Kumudini",
+      "email": "kumu@gmail.com",
+      "phone": 9422918612,
+      "address": {
+        "street": "MG road",
+        "city": "Pune",
+        "pincode": 411057
+      },
+      "join_date": {
+        "$date": "2025-11-19T13:21:34.977Z"
+      }
     }
   ],
   "orders": [
@@ -4076,6 +4110,123 @@
       "delivery_id": {
         "$oid": "0e00a9f6-bdc1-454d-ad26-3c25dedd1cff"
       }
+    },
+    {
+      "id": "cb06",
+      "_id": {
+        "$oid": "06a4cdd2-d64c-4b08-b9b0-bfe5fb6be074"
+      },
+      "user_id": {
+        "$oid": "689f0715da1bfb28f3eec4aa"
+      },
+      "restaurant_id": {
+        "$oid": "689f25dfda1bfb28f3eec532"
+      },
+      "home_chef_id": null,
+      "items": [
+        {
+          "item_id": {
+            "$oid": "689f25dfda1bfb28f3eec519"
+          },
+          "name": "Choco Lava Cake",
+          "quantity": 2,
+          "price": 109
+        },
+        {
+          "item_id": {
+            "$oid": "689f25dfda1bfb28f3eec51b"
+          },
+          "name": "Veggie Paradise Pizza",
+          "quantity": 2,
+          "price": 369
+        }
+      ],
+      "total_amount": 956,
+      "order_date": {
+        "$date": "2025-11-19T13:03:52.862Z"
+      },
+      "status": "placed",
+      "delivery_id": {
+        "$oid": "5d2bfae3-1375-4f5c-bc11-d5fef7b646cb"
+      }
+    },
+    {
+      "id": "dd1d",
+      "_id": {
+        "$oid": "f0ea0c5e-2c3a-41aa-abf3-a764f4dfa08e"
+      },
+      "user_id": {
+        "$oid": "eb5cb44a-664a-4230-97fd-40c316687505"
+      },
+      "restaurant_id": {
+        "$oid": "689f119dda1bfb28f3eec4c5"
+      },
+      "home_chef_id": null,
+      "items": [
+        {
+          "item_id": {
+            "$oid": "689f119dda1bfb28f3eec4bd"
+          },
+          "name": "Kachori",
+          "quantity": 3,
+          "price": 35
+        },
+        {
+          "item_id": {
+            "$oid": "689f119dda1bfb28f3eec4c3"
+          },
+          "name": "Palak wada",
+          "quantity": 2,
+          "price": 35
+        },
+        {
+          "item_id": {
+            "$oid": "689f119dda1bfb28f3eec4c0"
+          },
+          "name": "Bombay Bhel",
+          "quantity": 1,
+          "price": 50
+        }
+      ],
+      "total_amount": 225,
+      "order_date": {
+        "$date": "2025-11-19T13:23:11.995Z"
+      },
+      "status": "placed",
+      "delivery_id": {
+        "$oid": "d754f1c0-342c-44f2-be99-75fcd9cfa966"
+      }
+    },
+    {
+      "id": "1e51",
+      "_id": {
+        "$oid": "4b0b4321-c8ff-4676-9977-ddba905fabb2"
+      },
+      "user_id": {
+        "$oid": "eb5cb44a-664a-4230-97fd-40c316687505"
+      },
+      "restaurant_id": null,
+      "home_chef_id": {
+        "$oid": "68a1b9173c3662ab6eeec4cf"
+      },
+      "items": [
+        {
+          "item_id": {
+            "$oid": "68a1b9173c3662ab6eeec4c2"
+          },
+          "name": "Upma",
+          "quantity": 1,
+          "price": 70
+        }
+      ],
+      "total_amount": 70,
+      "order_date": {
+        "$date": "2025-11-19T13:23:12.034Z"
+      },
+      "status": "placed",
+      "delivery_id": {
+        "$oid": "ad7ea73d-ecbf-461f-baa8-a9b0bff967c6"
+      }
     }
   ],
   "deliveries": [
@@ -4366,6 +4517,48 @@
       "status": "assigned",
       "tip": 0,
       "rating": 4.2
+    },
+    {
+      "id": "2bf3",
+      "_id": {
+        "$oid": "5d2bfae3-1375-4f5c-bc11-d5fef7b646cb"
+      },
+      "name": "Sameer Chaudhary",
+      "phone": 789326541,
+      "order_id": {
+        "$oid": "06a4cdd2-d64c-4b08-b9b0-bfe5fb6be074"
+      },
+      "status": "assigned",
+      "tip": 10,
+      "rating": 2.9
+    },
+    {
+      "id": "3360",
+      "_id": {
+        "$oid": "d754f1c0-342c-44f2-be99-75fcd9cfa966"
+      },
+      "name": "Arjun Mehta",
+      "phone": 9123456789,
+      "order_id": {
+        "$oid": "f0ea0c5e-2c3a-41aa-abf3-a764f4dfa08e"
+      },
+      "status": "assigned",
+      "tip": 0,
+      "rating": 3.8
+    },
+    {
+      "id": "a2f7",
+      "_id": {
+        "$oid": "ad7ea73d-ecbf-461f-baa8-a9b0bff967c6"
+      },
+      "name": "Ajiz Khan",
+      "phone": 456852100,
+      "order_id": {
+        "$oid": "4b0b4321-c8ff-4676-9977-ddba905fabb2"
+      },
+      "status": "assigned",
+      "tip": 0,
+      "rating": 2.9
     }
   ]
 }

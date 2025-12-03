@@ -1,5 +1,6 @@
 import orderModel from "../models/Order.js"
 import mongoose from "mongoose"
+import { createDelivery } from "./deliveryController.js"
 
 //This is used for creating an order i.w when the user clicks on "PLACE ORDER"
 export const createOrder = async (request, response) => {
@@ -66,28 +67,50 @@ export const createOrder = async (request, response) => {
     }
 
     // ---------- CREATE ORDER ----------
-
     try {
-        const result = await orderModel.create(request.body)
-        console.log(result)
-        if (result != null) {
-            response.send({
-                "message": "Order placed",
-                success: true,
-                "result": result
-            })
+        // 1 Create order
+        const order = await orderModel.create(request.body);
+
+        // 2 Create delivery (internal function)
+        const delivery = await createDelivery(order._id);
+
+        if (delivery) {
+            // 3 Update order with delivery_id
+            await orderModel.findByIdAndUpdate(order._id, {
+                delivery_id: delivery._id
+            });
         }
-        else {
-            response.send({ message: "Something went wrong!Please try again", success: false, "result": null })
-        }
-    } catch (error) {
+
         response.send({
-            message: "Server error",
-            success: false,
-            result: null
+            message: "Order placed successfully",
+            success: true,
+            result: order,
+            delivery_assigned: delivery || null
         });
+
+    } 
+    catch (error) {
+        response.send({ message: "Server error", success: false, result: null });
     }
+    
 }
+/*
+When user clicks PLACE ORDER
+
+createOrder()
+
+orderModel.create() → gives order._id
+
+call createDelivery(order._id)
+
+createDelivery picks a random delivery boy → creates new delivery doc
+
+return created delivery doc
+
+update order.delivery_id = delivery._id
+
+send response to frontend
+*/
 
 //Every ObjectId must always be in quotes in JSON, regardless of what tool your are using.
 

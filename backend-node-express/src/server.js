@@ -10,7 +10,10 @@ import restaurantRoutes from './routes/restaurantRoute.js'
 import homechefRoutes from './routes/homechefRoute.js'
 import orderRoutes from './routes/orderRoute.js'
 import deliveryRoutes from './routes/deliveryRoute.js'
+import { errorHandler } from "./middlewares/errorHandler.js";
+
 const app=express()
+app.use(errorHandler);
 
 //console.log(process.env.PORT);
 //console.log(process.env.MONGO_URL)
@@ -48,8 +51,8 @@ app.listen(process.env.PORT)
 |             |                    | `GET /:id`     | `/api/orders/:id`      |
 |             |                    |  `PATCH /:id`  | `/api/orders/:id`  |
 | Deliveries  | `/api/deliveries`  | `GET /:id`     | `/api/deliveries/:id`  |
-|             |                    | `POST /`       | `/api/deliveries`      |
-|             |                    | `PATCH /:id`  | `/api/deliveries/:id`   |
+|             |                    | ``       | `/api/deliveries`      |
+|             |                    | `DELETE /:id`  | `/api/deliveries/:id`   |
 
 */
 

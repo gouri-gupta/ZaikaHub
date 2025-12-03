@@ -45,30 +45,49 @@ export const getDeliveryByID=async(request,response)=>{
     }
 }
 
-/*Create Delivery (When Order is Placed)
-
-This happens automatically when a user places an order.
-
-Your createOrder controller will:
-create an order document
-automatically choose a delivery boy
-automatically create a delivery document with {status: "assigned"}
-store the delivery’s _id inside order.delivery_id */
-export const createDelivery=(request,response)=>{
-    response.send("This will create a delivery ")
-}
-//This function will not be called by frontend —
+//Create Delivery (When Order is Placed)
+ // NOT a route handler — helper function only
+ //This function will not be called by frontend —
 //It will be called internally from createOrder.
+export const createDelivery=async (orderID) => {
+
+    // 1. pick a random delivery boy template
+    const sample = await deliveryModel.aggregate().sample(1);
+    const deliveryBoy = sample[0];
+
+    if (!deliveryBoy) return null;
+
+    const { name, phone, tip, rating } = deliveryBoy;
+
+    // 2. create new delivery document for THIS order
+    const delivery = await deliveryModel.create({
+        name,
+        phone,
+        order_id: orderID,
+        status: "assigned",
+        tip,
+        rating
+    });
+
+    return delivery;   // return full document
+};
+
+
+
 
 /*
-Instead of deleting the delivery document when user cancels the order, you should:
+A cancelled order should not have a delivery record
 
-1. Keep the delivery boy in the database (do NOT delete document)
-Deleting a delivery boy is wrong — delivery boy still exists.
+because delivery never happened.
 
-2. Just free him up → make him “available” again
+✔ The order still remains in order history
 
-Even though user clicks "Cancel Order", this function belongs to deliveryController because it affects Delivery collection.
+so user can see: “Cancelled Order — Feb 2024”
+
+✔ The delivery boy’s record is removed
+
+so he does NOT appear as "available", "assigned", etc.
+Because now there is no delivery for that order.
 */
 export const cancelDeliveryByID=async(request,response)=>{
     console.log(request.params.id)
@@ -84,12 +103,11 @@ export const cancelDeliveryByID=async(request,response)=>{
     }
 
     try {
-        const data = await deliveryModel.findOneAndUpdate({"order_id":id},{$set:{"order_id":null,"status":"available"}},{new:true})    //Because each delivery document will contain a unique order_id
-        //Additional options in findOneAndUpdate, such as new: true (to return the modified document), upsert: true (to insert a new document if no match is found).
+        const data = await deliveryModel.deleteOne({"order_id":id})
         console.log(data)
         if (data) {
             response.send({
-                "message": "Order cancelled successfully!Delivery status updated",
+                "message": "Order cancelled successfully!Delivery document deleted",
                 success: true,
                 "result": data
             })
@@ -120,6 +138,37 @@ export const cancelDeliveryByID=async(request,response)=>{
 | **createDelivery**          | Auto-assign delivery boy during order creation | internally from createOrder       |
 | **cancelDeliveryByOrderID** | When user cancels order                        | frontend Cancel button            |
 
+*/
+
+/*
+Should cancelDelivery also be a helper function?
+NO. cancelDelivery should NOT be converted into a helper function.
+It must remain a normal controller with a route, because:
+✔ It is triggered directly by a frontend action
+
+When the user clicks “Cancel Order”, your process is:
+
+Call:
+PATCH /api/orders/:id → cancelOrder()
+(update order document)
+
+Then also call:
+DELETE /api/delivery/:id → cancelDeliveryByID()
+(delete that delivery document)
+
+Because frontend explicitly needs to hit /api/delivery/:id, it should remain a real route controller, not an internal helper.
+*/
+
+/*
+When to use helper functions?
+
+You convert a function into a helper only when:
+
+It must be used internally by another controller
+
+It is not directly called by frontend
+
+It must not send HTTP response (res.send)
 */
 
 /*

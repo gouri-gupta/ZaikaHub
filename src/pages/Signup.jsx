@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react'
-import { v4 as uuidv4 } from 'uuid';
+
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import { UserContext } from '../context/UserProvider';
@@ -17,7 +17,6 @@ const Signup = () => {
     let { user, isLoggedIn, loginUser, logoutUser } = d
 
     let [currUser, setCurrUser] = useState({
-        _id: { $oid: uuidv4() },
         name: "",
         email: "",
         phone: "",
@@ -25,9 +24,6 @@ const Signup = () => {
             street: "",
             city: "",
             pincode: ""
-        },
-        join_date: {
-            $date: new Date().toISOString()
         }
     })
 
@@ -48,9 +44,10 @@ const Signup = () => {
 
     async function sendData(obj) {
         try {
-            await axios.post("http://localhost:4000/users", obj);
-            return true; // success
-        } catch (error) {
+            const res = await axios.post("http://localhost:5000/api/users", obj);
+            return res.data;
+        }
+        catch (error) {
             console.error("Error sending data:", error);
             return false;
         }
@@ -76,7 +73,7 @@ const Signup = () => {
         //email
         let regexEmail = /\S+@\S+\.\S+/
         //regex.test(string) 
-        if (email == "") {
+        if (email === "") {
             validationErrors.email = "*This field is mandatory"
             flag = false
         }
@@ -140,17 +137,18 @@ const Signup = () => {
             //call loginUser to set the user as the current user
             //navigate to the Home page  to display "Welcome to Zaika Hub User"
 
-            const success = await sendData(userToSend);
-            if (success) {
-                toast.success("Profile created successfully");
-                loginUser(userToSend);
-                navigate('/');
+            const res = await sendData(userToSend);
+
+            if (res && res.success) {
+                toast.success("Profile created successfully!");
+                loginUser(res.result);   // backend returns saved user with _id
+                navigate("/");
+            } else {
+                toast.error(res?.message || "Signup failed!");
             }
-            else {
-                toast.error("Something went wrong while creating your profile!");
-            }
+
         }
-        else {
+        else { //flag==false
             toast.error("Signup failed! Check your inputs and try again.")
         }
     }

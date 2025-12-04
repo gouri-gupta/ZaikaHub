@@ -10,10 +10,10 @@ import restaurantRoutes from './routes/restaurantRoute.js'
 import homechefRoutes from './routes/homechefRoute.js'
 import orderRoutes from './routes/orderRoute.js'
 import deliveryRoutes from './routes/deliveryRoute.js'
-import { errorHandler } from "./middlewares/errorHandler.js";
+import  {errorHandler}  from "./middleware/errorHandler.js";
 
 const app=express()
-app.use(errorHandler);
+
 
 //console.log(process.env.PORT);
 //console.log(process.env.MONGO_URL)
@@ -36,6 +36,7 @@ app.use("/api/homechefs",homechefRoutes)
 app.use("/api/orders",orderRoutes)
 app.use("/api/deliveries",deliveryRoutes)
 
+app.use(errorHandler);
 app.listen(process.env.PORT)
 
 

@@ -2,13 +2,12 @@ import { useContext, useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import axios from 'axios'
 import { UserContext } from '../context/UserProvider'
-import { restaurants } from './restaurants.json'
-import { homechefs } from './homechefs.json'
+import { useNavigate } from 'react-router-dom'
 import { MdDeliveryDining } from "react-icons/md";
 import toast from 'react-hot-toast'
 
 const Orders = () => {
-
+    let navigate = useNavigate()
     let [order, setOrder] = useState([])
     let [showPopup, setShowPopup] = useState(false)
     let [selectedDelivery, setSelectedDelivery] = useState(null)
@@ -17,38 +16,74 @@ const Orders = () => {
     let { userid } = user
 
     async function handleTrackDelivery(orderId) {
-        let response = await axios.get("http://localhost:4000/deliveries")
-        let { data } = response
-        const deli = data.find(d => {
-            if (!d || !d.order_id) return false;
-            const id = d.order_id.$oid || d.order_id;
-            return id === orderId;
-        });
+        try {
+            let response = await axios.get(`http://localhost:5000/api/deliveries/${orderId}`)
+            let { success, result } = response.data;
 
-        if (!deli) {
-            toast.error("No delivery details found for this order");
-            return;
+            if (!success) {
+                toast.error("No delivery details found!");
+                return;
+            }
+
+            setSelectedDelivery(result); //This will give a delivery document which contains order_id
+            setShowPopup(true);
+        } catch (error) {
+            toast.error("Error tracking delivery");
         }
-
-        setSelectedDelivery(deli);
-        setShowPopup(true);
     }
 
-    function findResturantName(id) {
-        let k = restaurants.find((val) => val._id.$oid == id)
-        return k?.name || "Unknown Restaurant"
+    async function findResturantName(id) {
+        let k = await axios.get(`http://localhost:5000/api/restaurants/${id}`)
+        let { result } = k.data
+        return result.name || "Unknown Restaurant"
     }
 
-    function findHomechefName(id) {
-        let k = homechefs.find((val) => val._id.$oid == id)
-        return k?.chef_name || "Unknown HomeChef"
+    async function findHomechefName(id) {
+        let k = await axios.get(`http://localhost:5000/api/homechefs/${id}`)
+        let { result } = k.data
+        return result.name || "Unknown HomeChef"
     }
 
     async function getOrdersData() {
-        let response = await axios.get("http://localhost:4000/orders")
-        let { data } = response
-        let order_curr = data.filter((val) => val.user_id.$oid == userid)
-        setOrder(order_curr)
+        let response = await axios.get(`http://localhost:5000/api/orders/${userid}`)
+        let { result } = response.data
+
+        // Attach names from API
+        const updatedOrders = await Promise.all(
+            result.map(async (ord) => {
+                let name = ord.restaurant_id
+                    ? await findResturantName(ord.restaurant_id)
+                    : await findHomechefName(ord.home_chef_id)
+
+                return { ...ord, entity_name: name }
+            })
+        )
+
+        setOrder(updatedOrders)
+    }
+
+    async function handleCancelOrder(orderId) {
+        try {
+            let orderResponse = await axios.patch(`http://localhost:5000/api/orders/${orderId}`);
+            let deliveryResponse = await axios.delete(`http://localhost:5000/api/deliveries/${orderId}`);
+
+            if (orderResponse.data.success) {
+                toast.success("Order cancelled successfully");
+
+                // update UI instantly
+                setOrder(prev =>
+                    prev.map(o => o._id === orderId ? { ...o, status: "cancelled" } : o)
+                );
+
+            }
+            else {
+                toast.error("Order cannot be cancelled");
+            }
+        }
+        catch (error) {
+            toast.error("Something went wrong");
+        }
+        setShowPopup(false); // ALWAYS close popup
     }
 
     useEffect(() => {
@@ -68,18 +103,17 @@ const Orders = () => {
                     ) : (
                         <section className="flex flex-col gap-6 w-full max-w-3xl">
                             {order.map((value) => {
-                                const mongoDateString = value.order_date.$date
+                                const mongoDateString = value.order_date
                                 const dateObject = new Date(mongoDateString)
                                 const orderDate = `${dateObject.getDate()}-${dateObject.getMonth() + 1}-${dateObject.getFullYear()}`
-                                const name = value.restaurant_id
-                                    ? findResturantName(value.restaurant_id.$oid)
-                                    : findHomechefName(value.home_chef_id.$oid)
+                                const name = value.entity_name
+
 
                                 return (
-                                    <div key={value._id.$oid} className="bg-white rounded-2xl shadow-md p-5 flex flex-col gap-4 hover:shadow-lg transition duration-300">
+                                    <div key={value._id} className="bg-white rounded-2xl shadow-md p-5 flex flex-col gap-4 hover:shadow-lg transition duration-300">
                                         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
                                             <h2 className="text-lg font-semibold text-black">
-                                                Order #{value._id.$oid}
+                                                Order #{value._id}
                                             </h2>
                                             <span className="text-sm text-gray-500">📅 {orderDate}</span>
                                         </div>
@@ -92,7 +126,7 @@ const Orders = () => {
                                             <h3 className="font-semibold text-gray-700">Items:</h3>
                                             <ul className="list-disc ml-5 text-gray-600">
                                                 {value.items.map((item) => (
-                                                    <li key={item.item_id.$oid}>
+                                                    <li key={item.item_id}>
                                                         {item.name} (x{item.quantity})
                                                     </li>
                                                 ))}
@@ -106,14 +140,25 @@ const Orders = () => {
                                             </p>
                                         </div>
 
-                                        <div className="flex justify-end">
-                                            <button
-                                                onClick={() => handleTrackDelivery(value._id.$oid)}
-                                                className="bg-amber-500 flex items-center gap-2 text-white font-semibold px-4 py-2 rounded-xl hover:bg-amber-600 transition cursor-pointer"
-                                            >
-                                                Track Delivery <MdDeliveryDining />
-                                            </button>
-                                        </div>
+                                        {
+                                            value.status === "cancelled" ?
+                                                <div className="flex justify-end">
+                                                    <button disabled
+                                                        onClick={() => handleTrackDelivery(value._id)}
+                                                        className="bg-grey-500 flex items-center gap-2 text-white font-semibold px-4 py-2 rounded-xl hover:bg-grey-600 transition cursor-not-allowed"
+                                                    >
+                                                        Track Delivery <MdDeliveryDining />
+                                                    </button>
+                                                </div> :
+                                                <div className="flex justify-end">
+                                                    <button
+                                                        onClick={() => handleTrackDelivery(value._id)}
+                                                        className="bg-amber-500 flex items-center gap-2 text-white font-semibold px-4 py-2 rounded-xl hover:bg-amber-600 transition cursor-pointer"
+                                                    >
+                                                        Track Delivery <MdDeliveryDining />
+                                                    </button>
+                                                </div>
+                                        }
                                     </div>
                                 )
                             })}
@@ -121,22 +166,30 @@ const Orders = () => {
                     )
                 }
 
-                
+
                 {showPopup && selectedDelivery && (
                     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
                         <div className="bg-white rounded-2xl shadow-lg p-6 w-[90%] max-w-md relative">
                             <button onClick={() => setShowPopup(false)} className="absolute top-2 right-2 text-gray-600 hover:text-black cursor-pointer">✕</button>
 
-                            <h2 className="text-xl font-semibold mb-2">Order ID: {selectedDelivery.order_id.$oid}</h2>
+                            <h2 className="text-xl font-semibold mb-2">Order ID: {selectedDelivery.order_id}</h2>
                             <p><strong>Delivery Boy:</strong> {selectedDelivery.name}</p>
                             <p><strong>Phone:</strong> {selectedDelivery.phone}</p>
                             <p><strong>Status:</strong> {selectedDelivery.status}</p>
                             <p><strong>Tip:</strong> ₹{selectedDelivery.tip}</p>
                             <p><strong>Rating:</strong> ⭐{selectedDelivery.rating}</p>
 
-                            <button className="bg-red-600 text-white rounded-lg px-4 py-2 mt-4 hover:bg-red-700 cursor-pointer">
-                                Cancel Order
-                            </button>
+                            {
+                                selectedDelivery.status === "delivered" ?
+                                    <button disabled onClick={() => handleCancelOrder(selectedDelivery.order_id)} className="bg-grey-600 text-white rounded-lg px-4 py-2 mt-4 hover:bg-grey-700 cursor-not-allowed">
+                                        Cancel Order
+                                    </button> :
+                                    <button onClick={() => handleCancelOrder(selectedDelivery.order_id)} className="bg-red-600 text-white rounded-lg px-4 py-2 mt-4 hover:bg-red-700 cursor-pointer">
+                                        Cancel Order
+                                    </button>
+                            }
+
+
                         </div>
                     </div>
                 )}

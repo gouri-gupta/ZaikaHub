@@ -30,8 +30,7 @@ const Menu = () => {
     let location = useLocation()
     //hooks like useLocation() (and all React hooks) must be called at the top level, not inside functions or conditionals.
 
-    let [rest, setRest] = useState(false) //this state tells us whether the order is of restaurant or of homechef
-    //if this is true -> RESTAURANT otherwise HOMECHEF
+    
 
     let [entity, setEntity] = useState({
         entity_name: "",
@@ -39,36 +38,31 @@ const Menu = () => {
         homechef_id: null
     })
 
+    //Fetching single restaurant/homechef
     async function getRestaurantsData() {
-        let response = await axios.get("http://localhost:4000/restaurants")
-        //console.log(response)
-        //console.log(response.data);
-        let { data } = response;
-        console.log(data);
-        let curr_res = data.find(val => val._id.$oid == id)
-        console.log(curr_res);
-        setCurrentRest(curr_res)
+        let res = await axios.get(`http://localhost:5000/api/restaurants/${id}`);
+        let data = res.data.result;
+
+        setCurrentRest(data);
+
         setEntity({
-            entity_name: curr_res.name,
+            entity_name: data.name,
             restaurant_id: id,
             homechef_id: null
-        })
+        });
     }
 
     async function getHomechefsData() {
-        let response = await axios.get("http://localhost:4000/homechefs")
-        //console.log(response)
-        //console.log(response.data);
-        let { data } = response;
-        console.log(data);
-        let curr_res = data.find(val => val._id.$oid == id)
-        console.log(curr_res);
-        setCurrentRest(curr_res)
+        let res = await axios.get(`http://localhost:5000/api/homechefs/${id}`);
+        let data = res.data.result;
+
+        setCurrentRest(data);
+
         setEntity({
-            entity_name: curr_res.name,
+            entity_name: data.name,
             restaurant_id: null,
             homechef_id: id
-        })
+        });
     }
 
     /*Use the current URL path to decide which file to fetch.You can detect the current path using useLocation() from React Router.*/
@@ -84,6 +78,11 @@ const Menu = () => {
 
     }, [id, location.pathname])
 
+    //LOADING STATE
+    if (!currentRest) {
+        return <h1 className='text-3xl text-center mt-10 text-gray-500'>Loading menu...</h1>;
+    }
+
     let { name, food_type, menu_items } = currentRest
 
     //console.log(name,menu_items);
@@ -95,7 +94,7 @@ const Menu = () => {
             {/*<h1>Display menu items of the Restaurant / Homechef</h1> */}
             {/*<h2>Restaurant id is {id}</h2> */}
             <h1 className='text-4xl font-bold font-sans m-2 text-red-700'>{currentRest.name}</h1>
-            <p className='text-xl italic font-bold m-2 text-gray-600'>Love, spice, and everything nice 🌶️</p> <hr className='text-red-700'/>
+            <p className='text-xl italic font-bold m-2 text-gray-600'>Love, spice, and everything nice 🌶️</p> <hr className='text-red-700' />
             <section className=' flex flex-row gap-10 flex-wrap m-2'> {/*border border-solid border-green-500 */}
                 {
                     menu_items.map((value, index) => {

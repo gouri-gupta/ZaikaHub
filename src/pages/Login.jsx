@@ -29,12 +29,15 @@ const Login = () => {
 
 
     async function getUsersData() {
-        let a = await axios.get("http://localhost:4000/users")
-        console.log(a);
-        let { data } = a
-        let allusers = data
-        console.log(allusers);
-        setAllUsers(allusers)
+        try {
+            let response = await axios.get("http://localhost:5000/api/users");
+            console.log(response.data);
+            setAllUsers(response.data);
+        }
+        catch (error) {
+            console.error(error);
+            toast.error("Failed to load users");
+        }
     }
 
     useEffect(() => {
@@ -84,12 +87,12 @@ const Login = () => {
 
                         <div className='flex flex-col  gap-2'>
                             <label>Log in by email</label>
-                            <input type="text" placeholder='Enter email' name='curr_email' value={curr_email} onChange={handleChange} className='w-full font-normal italic text-gray-500 border border-solid border-red-700 rounded-lg bg-white p-2'/>
+                            <input type="text" placeholder='Enter email' name='curr_email' value={curr_email} onChange={handleChange} className='w-full font-normal italic text-gray-500 border border-solid border-red-700 rounded-lg bg-white p-2' />
                         </div>
 
                         <div className='flex flex-col  gap-2'>
                             <label>Log in by mobile number</label>
-                            <input type="text" placeholder='Enter mobile number' name='curr_phone' value={curr_phone} onChange={handleChange} className='w-full font-normal italic text-gray-500 border border-solid border-red-700 rounded-lg bg-white p-2'/>
+                            <input type="text" placeholder='Enter mobile number' name='curr_phone' value={curr_phone} onChange={handleChange} className='w-full font-normal italic text-gray-500 border border-solid border-red-700 rounded-lg bg-white p-2' />
                         </div>
 
                         <div className='flex justify-center'>

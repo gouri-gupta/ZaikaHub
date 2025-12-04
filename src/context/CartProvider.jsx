@@ -27,7 +27,7 @@ const CartProvider = ({ children }) => {
       category: "Main Course"
       entity_name: "Harjit Singh"
       homechef_id: "689f581f64ae0cddb3eec4f0"
-      item_id: {$oid: '689f581f64ae0cddb3eec4e1'}
+      item_id:  '689f581f64ae0cddb3eec4e1'
       name: "Butter Chicken"
       price: 320
       quantity: 1
@@ -38,9 +38,26 @@ const CartProvider = ({ children }) => {
     //entity ={entity_name,restaurant_id,homechef_id} //either restaurant_id can be NULL or homechef_id can be NULL
     let { name, price, category, item_id } = value
     let { entity_name, restaurant_id, homechef_id } = entity
-    let newObj = { name, price, category, entity_name, restaurant_id, homechef_id, quantity: 1, item_id }
-    setCart([...cart, newObj])
-    toast.success("Item is added to cart successfully")
+
+    // Check if item already exists in cart
+    let existing = cart.find(val => val.item_id === item_id)
+
+    if (existing) {
+      // Item exists → increase quantity
+      let updatedCart = cart.map(val =>
+        val.item_id === item_id
+          ? { ...val, quantity: val.quantity + 1 }
+          : val
+      )
+      setCart(updatedCart)
+      toast.success("Quantity increased")
+    }
+    else {
+      let newObj = { name, price, category, entity_name, restaurant_id, homechef_id, quantity: 1, item_id }
+      setCart([...cart, newObj])
+      toast.success("Item is added to cart successfully")
+    }
+
   }
 
   //updateItems -function which is used for quatity update
@@ -50,7 +67,7 @@ const CartProvider = ({ children }) => {
   //item=target item which is to be updated
   let updateItems = (item, action) => {
     let currcart = [...cart] //Make a shallow copy of the cart array => new array that copies all elements from the current cart state so that you don’t mutate the existing state array (React expects immutability).
-    let index_target = currcart.findIndex(val => val.item_id.$oid === item.item_id.$oid);
+    let index_target = currcart.findIndex(val => val.item_id === item.item_id);
     //console.log(index_target);
     let itemToUpdate = currcart[index_target]
     if (action == "add") {
@@ -104,7 +121,7 @@ const CartProvider = ({ children }) => {
   */
 
   return (
-    <cartContext.Provider value={{ cart, setCart,addToCart, updateItems }}>
+    <cartContext.Provider value={{ cart, setCart, addToCart, updateItems }}>
       {children}
     </cartContext.Provider>
   )

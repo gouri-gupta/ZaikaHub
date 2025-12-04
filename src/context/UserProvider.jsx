@@ -13,7 +13,7 @@ const UserProvider = ({children}) => {
         name:"",
         email:"",
         phone:0,
-        userid:"" //It should be same _id.$oid
+        userid:"" //It should be same _id
         //useful for future backend calls (like orders by user).userid in your React user state should match that $oid value as a simple string:
     })
 
@@ -29,7 +29,7 @@ const UserProvider = ({children}) => {
     //loginUser() → updates the context with the logged-in user’s info.
     function loginUser(userObj){
         //will set the user state if the user details is found  i.e user details exists in database
-        setUser({name:userObj.name,email:userObj.email,phone:userObj.phone,userid:userObj._id.$oid})
+        setUser({name:userObj.name,email:userObj.email,phone:userObj.phone,userid:userObj._id})
         setLog(true)
     }
 

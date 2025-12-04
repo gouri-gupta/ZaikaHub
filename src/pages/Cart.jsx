@@ -38,8 +38,8 @@ const Cart = () => {
 
   async function sendOrder(order_obj, del_obj) {
     try {
-      await axios.post("http://localhost:4000/orders", order_obj);
-      await axios.post("http://localhost:4000/deliveries", del_obj)
+      await axios.post("http://localhost:5000/api/orders", order_obj);
+      //await axios.post("http://localhost:4000/deliveries", del_obj)
       return true; // success
     } catch (error) {
       console.error("Error sending data:", error);
@@ -110,22 +110,14 @@ const Cart = () => {
         let value = group[ele] //this value is an array
         console.log("KEY", ele, "VALUE", value);
         //value is an array eg of element of array ->{name: 'Amritsari Kulcha ', price: 150, category: 'Main Course', entity_name: 'Delhi Tandoor', restaurant_id: '689f2061da1bfb28f3eec500', …}
-        let orderid = uuidv4()
-        let deliveryID = uuidv4()
+        //let orderid = uuidv4()
+        //let deliveryID = uuidv4()
         let obj = {
-          _id: { $oid: orderid },
-          user_id: { $oid: user.userid },
+          user_id: user.userid ,
           restaurant_id: {},
           home_chef_id: {},
           items: [],
-          total_amount: 0,
-          order_date: {
-            $date: new Date().toISOString()
-          },
-          status: "placed",
-          delivery_id: {
-            $oid: deliveryID
-          }
+          total_amount: 0
         }
         //now add the values for remaining keys
 
@@ -133,11 +125,11 @@ const Cart = () => {
         //console.log("R_ID :",value[0].restaurant_id);
         //console.log("HC_ID :",value[0].homechef_id);
         if (value[0].restaurant_id) {
-          obj.restaurant_id = { $oid: value[0].restaurant_id };
+          obj.restaurant_id = value[0].restaurant_id ;
           obj.home_chef_id = null;
         } else {
           obj.restaurant_id = null;
-          obj.home_chef_id = { $oid: value[0].homechef_id };
+          obj.home_chef_id = value[0].homechef_id ;
         }
 
 
@@ -145,9 +137,7 @@ const Cart = () => {
         //value is an array ->food item relevant info in value object ->category: "Main Course" ; item_id: {$oid: '689f2061da1bfb28f3eec4f7'} ; name: "Amritsari Kulcha " ; price : 150 ; quantity: 1
         //obj.items is an array of objects.Each object in this array contain the following properties 
         /*{
-            "item_id": {
-              "$oid": "689f168cda1bfb28f3eec4c7"
-            },
+            "item_id":  "689f168cda1bfb28f3eec4c7",
             "name": "Veg Hakka Noodles ",
             "quantity": 1,
             "price": 180
@@ -168,30 +158,11 @@ const Cart = () => {
         console.log("ORDER OBJECT", obj);
 
         //FOR EACH ORDER YOU ALSO NEED  CORRESPONIDNG DELIVERY DOCUMENT
-        //SO NOW CREATING A DELIVERY OBJECT
-
-        //selecting random delievery boy from delivery.json to post to deliveries
-        let i = Math.floor(Math.random() * delivery.length);
-        let randomEle = delivery[i]
-        //console.log("DELIVERY BOY", randomEle);
-        //randomEle object -> (same is an example of Delivery object/document)
-        /* name: "Ritesh Kumar" ,order_id: {$oid: '68a05a9de20b79c4baeec4ba'} , phone: 4569851223,rating: 3.5 ,status: "assigned",tip: 10,_id :{$oid: '68a05a9de20b79c4baeec4b9'}*/
-        let d_obj = {
-          _id: { $oid: deliveryID }, //{$oid}
-          name: randomEle.name,
-          phone: randomEle.phone,
-          order_id: { $oid: orderid }, //{$oid}
-          status: "assigned",
-          tip: randomEle.tip,
-          rating: randomEle.rating
-        }
-
-        console.log("DELIVERY OBJECT", d_obj);
+        //SO NOW CREATING A DELIVERY OBJECT -> done in backend
 
         //Now post this order and delivery object to the respective dbs i.e jsons
         try {
-          await axios.post("http://localhost:4000/orders", obj);
-          await axios.post("http://localhost:4000/deliveries", d_obj)
+          await axios.post("http://localhost:5000/api/orders", obj);
           //return true; // success
         } catch (error) {
           flag = false;
@@ -235,7 +206,7 @@ const Cart = () => {
               cart.map((value) => {
                 //console.log("CART VALUE ",value);
                 return (
-                  <div key={value.item_id.$oid} className='  flex flex-col bg-white rounded-3xl text-gray-600 font-sans shadow-lg hover:scale-102 transition-transform duration-200'> {/*border border-solid border-blue-900 */}
+                  <div key={value.item_id} className='  flex flex-col bg-white rounded-3xl text-gray-600 font-sans shadow-lg hover:scale-102 transition-transform duration-200'> {/*border border-solid border-blue-900 */}
                     <h1 className='m-2 text-2xl font-bold text-red-700'> {value.name} ({value.category})</h1>
                     <div className=' flex flex-row justify-between '> {/*border border-solid border-rose-500 */}
                       {

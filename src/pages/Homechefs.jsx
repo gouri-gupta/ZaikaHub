@@ -1,6 +1,7 @@
 import { useState, useEffect, Fragment } from 'react'
 import { Outlet, Link, useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import toast from "react-hot-toast";
 import axios from 'axios'
 import { FaArrowUpLong, FaArrowDownLong } from "react-icons/fa6";
 import { MdRestaurantMenu } from "react-icons/md";
@@ -18,12 +19,15 @@ const Homechefs = () => {
     let [showVegOnly, setShowVegOnly] = useState(false)
 
     async function getData() {
-        let response = await axios.get("http://localhost:4000/homechefs")
-        //console.log(response)
-        //console.log(response.data);
-        let { data } = response;
-        console.log(data);
-        setHomechef(data)
+        try {
+            let response = await axios.get("http://localhost:5000/api/homechefs");
+            console.log(response.data);
+            setHomechef(response.data || response.data.result);  //// backend returns {result:[]} or [] ?
+        }
+        catch (error) {
+            console.error(error);
+            toast.error("Failed to load Homechefs");
+        }
     }
 
     function findCity() {
@@ -176,7 +180,7 @@ const Homechefs = () => {
                                     {
                                         homechef.filter(item => item.location.city == value).map((rvalue, index) => {  //rvalue=homechef object
                                             return (
-                                                <div key={rvalue._id.$oid} className=' flex flex-col w-[300px] p-3 bg-white rounded-3xl text-gray-600 font-sans shadow-lg hover:scale-105 transition-transform duration-300'>
+                                                <div key={rvalue._id} className=' flex flex-col w-[300px] p-3 bg-white rounded-3xl text-gray-600 font-sans shadow-lg hover:scale-105 transition-transform duration-300'>
                                                     <h1 className='m-2 text-2xl font-bold text-red-700'>{rvalue.name}</h1>
                                                     <h1 className='m-1 '>Cuisine types: {rvalue.cuisine_type.join(" | ")}</h1>
                                                     <h1 className='m-1 '>Speciality : {rvalue.speciality}</h1>
@@ -197,7 +201,7 @@ const Homechefs = () => {
                                                         }
                                                     </div>
                                                     <h1 className='m-1'>Ratings : {rvalue.rating}</h1>
-                                                    <div className='flex flex-row outline-2 outline-red-800 outline-offset-0 w-[100px] m-2 rounded-2xl font-bold text-red-700 cursor-pointer hover:bg-gray-100 '><button className="flex items-center justify-center gap-1 cursor-pointer" onClick={() => handleMenu(rvalue._id.$oid)}>View Menu <MdRestaurantMenu className="text-lg" /></button></div> {/* <MdRestaurantMenu /> */}
+                                                    <div className='flex flex-row outline-2 outline-red-800 outline-offset-0 w-[100px] m-2 rounded-2xl font-bold text-red-700 cursor-pointer hover:bg-gray-100 '><button className="flex items-center justify-center gap-1 cursor-pointer" onClick={() => handleMenu(rvalue._id)}>View Menu <MdRestaurantMenu className="text-lg" /></button></div> {/* <MdRestaurantMenu /> */}
                                                 </div>
                                             )
                                         })
@@ -212,7 +216,7 @@ const Homechefs = () => {
                                     {
                                         filteredHomechefs.map((value, index) => {
                                             return (
-                                                <div key={value._id.$oid} className=' flex flex-col w-[300px] p-3 bg-white rounded-3xl text-gray-600 font-sans shadow-lg hover:scale-105 transition-transform duration-300'>
+                                                <div key={value._id} className=' flex flex-col w-[300px] p-3 bg-white rounded-3xl text-gray-600 font-sans shadow-lg hover:scale-105 transition-transform duration-300'>
                                                     <h1 className='m-2 text-2xl font-bold text-red-700'>{value.name}</h1>
                                                     <div className='flex items-center gap-1 m-1'>
                                                         <div className='text-red-700 text-xl'><IoLocation /></div>
@@ -237,7 +241,7 @@ const Homechefs = () => {
                                                         }
                                                     </div>
                                                     <h1 className='m-1 '>Ratings : {value.rating}</h1>
-                                                    <div className='flex flex-row outline-2 outline-red-800 outline-offset-0 w-[100px] m-2 rounded-2xl font-bold text-red-700 cursor-pointer hover:bg-gray-100 '><button className="flex items-center justify-center gap-1 cursor-pointer" onClick={() => handleMenu(value._id.$oid)}>View Menu <MdRestaurantMenu className="text-lg" /></button></div>
+                                                    <div className='flex flex-row outline-2 outline-red-800 outline-offset-0 w-[100px] m-2 rounded-2xl font-bold text-red-700 cursor-pointer hover:bg-gray-100 '><button className="flex items-center justify-center gap-1 cursor-pointer" onClick={() => handleMenu(value._id)}>View Menu <MdRestaurantMenu className="text-lg" /></button></div>
                                                 </div>
                                             )
                                         })

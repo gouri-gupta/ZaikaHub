@@ -6,7 +6,7 @@ import { UserContext } from '../context/UserProvider';
 import { useNavigate } from 'react-router-dom';
 import logo from '../components/logo.png';
 import { Link } from 'react-router-dom';
-
+const API = import.meta.env.VITE_API_BASE_URL;
 
 const Signup = () => {
 
@@ -44,7 +44,7 @@ const Signup = () => {
 
     async function sendData(obj) {
         try {
-            const res = await axios.post("http://localhost:5000/api/users", obj);
+            const res = await axios.post(`${API}/api/users`, obj);
             return res.data;
         }
         catch (error) {

@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { FaCartPlus } from "react-icons/fa";
 import { cartContext } from '../context/CartProvider';
 import { IoLocation } from "react-icons/io5";
-
+const API = import.meta.env.VITE_API_BASE_URL;
 
 const Menu = () => {
     const [currentRest, setCurrentRest] = useState({
@@ -40,7 +40,7 @@ const Menu = () => {
 
     //Fetching single restaurant/homechef
     async function getRestaurantsData() {
-        let res = await axios.get(`http://localhost:5000/api/restaurants/${id}`);
+        let res = await axios.get(`${API}/api/restaurants/${id}`);
         let data = res.data.result;
 
         setCurrentRest(data);

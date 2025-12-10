@@ -5,6 +5,9 @@ import { UserContext } from '../context/UserProvider'
 import toast from 'react-hot-toast'
 import logo from '../components/logo.png';
 import { Link } from 'react-router-dom';
+const API = import.meta.env.VITE_API_BASE_URL;
+//axios.get(`${API}/api/users`);
+
 
 
 //DO THE FORM VALIDATION ALSO
@@ -30,7 +33,7 @@ const Login = () => {
 
     async function getUsersData() {
         try {
-            let response = await axios.get("http://localhost:5000/api/users");
+            let response = await axios.get(`${API}/api/users`);
             console.log(response.data);
             setAllUsers(response.data);
         }

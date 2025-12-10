@@ -7,6 +7,7 @@ import { FaArrowUpLong, FaArrowDownLong } from "react-icons/fa6";
 import { MdRestaurantMenu } from "react-icons/md";
 import { BiFoodTag } from "react-icons/bi";
 import { IoLocation } from "react-icons/io5";
+const API = import.meta.env.VITE_API_BASE_URL;
 
 const Restaurants = () => {
 
@@ -22,7 +23,7 @@ const Restaurants = () => {
 
     async function getData() {
         try {
-            let response = await axios.get("http://localhost:5000/api/restaurants");
+            let response = await axios.get(`${API}/api/restaurants`);
             console.log(response.data);
             setRestaurant(response.data);
         }

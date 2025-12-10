@@ -7,6 +7,7 @@ import { FaArrowUpLong, FaArrowDownLong } from "react-icons/fa6";
 import { MdRestaurantMenu } from "react-icons/md";
 import { BiFoodTag } from "react-icons/bi";
 import { IoLocation } from "react-icons/io5";
+const API = import.meta.env.VITE_API_BASE_URL;
 
 const Homechefs = () => {
 
@@ -20,7 +21,7 @@ const Homechefs = () => {
 
     async function getData() {
         try {
-            let response = await axios.get("http://localhost:5000/api/homechefs");
+            let response = await axios.get(`${API}/api/homechefs`);
             console.log(response.data);
             setHomechef(response.data || response.data.result);  //// backend returns {result:[]} or [] ?
         }

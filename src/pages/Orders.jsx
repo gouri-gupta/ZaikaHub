@@ -5,6 +5,7 @@ import { UserContext } from '../context/UserProvider'
 import { useNavigate } from 'react-router-dom'
 import { MdDeliveryDining } from "react-icons/md";
 import toast from 'react-hot-toast'
+const API = import.meta.env.VITE_API_BASE_URL;
 
 const Orders = () => {
     let navigate = useNavigate()
@@ -17,7 +18,7 @@ const Orders = () => {
 
     async function handleTrackDelivery(orderId) {
         try {
-            let response = await axios.get(`http://localhost:5000/api/deliveries/${orderId}`)
+            let response = await axios.get(`${API}/api/deliveries/${orderId}`)
             let { success, result } = response.data;
 
             if (!success) {
@@ -33,19 +34,19 @@ const Orders = () => {
     }
 
     async function findResturantName(id) {
-        let k = await axios.get(`http://localhost:5000/api/restaurants/${id}`)
+        let k = await axios.get(`${API}/api/restaurants/${id}`)
         let { result } = k.data
         return result.name || "Unknown Restaurant"
     }
 
     async function findHomechefName(id) {
-        let k = await axios.get(`http://localhost:5000/api/homechefs/${id}`)
+        let k = await axios.get(`${API}/api/homechefs/${id}`)
         let { result } = k.data
         return result.name || "Unknown HomeChef"
     }
 
     async function getOrdersData() {
-        let response = await axios.get(`http://localhost:5000/api/orders/${userid}`)
+        let response = await axios.get(`${API}/api/orders/${userid}`)
         let { result } = response.data
 
         // Attach names from API
@@ -64,8 +65,8 @@ const Orders = () => {
 
     async function handleCancelOrder(orderId) {
         try {
-            let orderResponse = await axios.patch(`http://localhost:5000/api/orders/${orderId}`);
-            let deliveryResponse = await axios.delete(`http://localhost:5000/api/deliveries/${orderId}`);
+            let orderResponse = await axios.patch(`${API}/api/orders/${orderId}`);
+            let deliveryResponse = await axios.delete(`${API}/api/deliveries/${orderId}`);
 
             if (orderResponse.data.success) {
                 toast.success("Order cancelled successfully");

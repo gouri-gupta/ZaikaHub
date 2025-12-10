@@ -10,7 +10,7 @@ import { delivery } from './delivery.json' //we are importing delivery array the
 import axios from 'axios';
 import toast from 'react-hot-toast'
 import { BsCart4 } from "react-icons/bs";
-
+const API = import.meta.env.VITE_API_BASE_URL;
 
 const Cart = () => {
 
@@ -38,7 +38,7 @@ const Cart = () => {
 
   async function sendOrder(order_obj, del_obj) {
     try {
-      await axios.post("http://localhost:5000/api/orders", order_obj);
+      await axios.post(`${API}/api/orders`, order_obj);
       //await axios.post("http://localhost:4000/deliveries", del_obj)
       return true; // success
     } catch (error) {
@@ -162,7 +162,7 @@ const Cart = () => {
 
         //Now post this order and delivery object to the respective dbs i.e jsons
         try {
-          await axios.post("http://localhost:5000/api/orders", obj);
+          await axios.post(`${API}/api/orders`, obj);
           //return true; // success
         } catch (error) {
           flag = false;

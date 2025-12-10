@@ -53,7 +53,7 @@ const Menu = () => {
     }
 
     async function getHomechefsData() {
-        let res = await axios.get(`http://localhost:5000/api/homechefs/${id}`);
+        let res = await axios.get(`${API}/api/homechefs/${id}`);
         let data = res.data.result;
 
         setCurrentRest(data);

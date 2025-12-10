@@ -22,7 +22,11 @@ const app=express()
 //They must run before any routes
 //They configure how your entire server works
 app.use(express.json());
-app.use(cors())
+app.use(cors({
+  origin: "*", // for now; later you can restrict to your frontend domain
+  credentials: false
+}));
+
 
 connectDB(process.env.MONGO_URL)
 
@@ -37,7 +41,11 @@ app.use("/api/orders",orderRoutes)
 app.use("/api/deliveries",deliveryRoutes)
 
 app.use(errorHandler);
-app.listen(process.env.PORT)
+
+app.listen(process.env.PORT || 5000, () => {
+  console.log("Server running on port", process.env.PORT || 5000);
+});
+
 
 
 /*
